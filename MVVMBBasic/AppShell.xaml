@@ -1,25 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="MVVMBBasic.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MVVMBBasic"
     xmlns:views="clr-namespace:Views"
-    Title="MVVMBBasic">
+    Title="MVVMBBasic"
+    FlyoutBehavior="Flyout">
 
+    <FlyoutItem Title="Welcome">
+        <ShellContent
+            Title="Welcome"
+            Route="WelcomePage"
+            ContentTemplate="{DataTemplate views:WelcomePage}" />
+    </FlyoutItem>
 
     <FlyoutItem Title="Calculator Age">
         <ShellContent
-        Title="Calculator Age"
-        Route="CalcAge"
-        ContentTemplate="{DataTemplate views:CalcAgePage}"/>
+            Title="Calculator Age"
+            Route="CalcAge"
+            ContentTemplate="{DataTemplate views:CalcAgePage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Math Calculator">
         <ShellContent
-        Title="Math Calculator"
-        Route="CalculatorPage"
-        ContentTemplate="{DataTemplate views:CalculatorPage}"/>
+            Title="Math Calculator"
+            Route="CalculatorPage"
+            ContentTemplate="{DataTemplate views:CalculatorPage}" />
     </FlyoutItem>
 
 </Shell>
