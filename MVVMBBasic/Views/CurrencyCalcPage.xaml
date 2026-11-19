@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ViewModels"
+             x:Class="Views.CurrencyCalcPage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:CurrencyCalcViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="המרת שקלים (₪) למטבע חוץ"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+           
+            <Frame BorderColor="LightGray" CornerRadius="10" Padding="15">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="הכנס סכום בשקלים:" FontSize="16" />
+
+                    <Entry Placeholder="לדוגמה: 100"
+                           Keyboard="Numeric"
+                           Text="{Binding IlsAmountText}"
+                           FontSize="18" />
+
+                    <Button Text="חשב המרה"
+                            Command="{Binding ConvertCommand}"
+                            BackgroundColor="#512BD4"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="8" />
+                </VerticalStackLayout>
+            </Frame>
+
+      
+            <Grid ColumnDefinitions="*, *, *, *, *"
+                  ColumnSpacing="6"
+                  Margin="0,10,0,0">
+
+           
+                <Frame Grid.Column="0" Padding="6" CornerRadius="8" BackgroundColor="#F3F4F6">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="USD ($)" FontAttributes="Bold" FontSize="11" HorizontalOptions="Center" />
+                        <Label Text="דולר" FontSize="10" TextColor="Gray" HorizontalOptions="Center" />
+                        <Label Text="{Binding UsdResult}" FontAttributes="Bold" FontSize="12" TextColor="#512BD4" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+              
+                <Frame Grid.Column="1" Padding="6" CornerRadius="8" BackgroundColor="#F3F4F6">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="EUR (€)" FontAttributes="Bold" FontSize="11" HorizontalOptions="Center" />
+                        <Label Text="אירו" FontSize="10" TextColor="Gray" HorizontalOptions="Center" />
+                        <Label Text="{Binding EurResult}" FontAttributes="Bold" FontSize="12" TextColor="#512BD4" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            
+                <Frame Grid.Column="2" Padding="6" CornerRadius="8" BackgroundColor="#F3F4F6">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="GBP (£)" FontAttributes="Bold" FontSize="11" HorizontalOptions="Center" />
+                        <Label Text="ליש״ט" FontSize="10" TextColor="Gray" HorizontalOptions="Center" />
+                        <Label Text="{Binding GbpResult}" FontAttributes="Bold" FontSize="12" TextColor="#512BD4" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+               
+                <Frame Grid.Column="3" Padding="6" CornerRadius="8" BackgroundColor="#F3F4F6">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="JPY (¥)" FontAttributes="Bold" FontSize="11" HorizontalOptions="Center" />
+                        <Label Text="ין יפני" FontSize="10" TextColor="Gray" HorizontalOptions="Center" />
+                        <Label Text="{Binding JpyResult}" FontAttributes="Bold" FontSize="12" TextColor="#512BD4" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+               
+                <Frame Grid.Column="4" Padding="6" CornerRadius="8" BackgroundColor="#F3F4F6">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="CHF" FontAttributes="Bold" FontSize="11" HorizontalOptions="Center" />
+                        <Label Text="פרנק" FontSize="10" TextColor="Gray" HorizontalOptions="Center" />
+                        <Label Text="{Binding ChfResult}" FontAttributes="Bold" FontSize="12" TextColor="#512BD4" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </Grid>
+
+        
+            <Button Text="חזרה לדף הבית"
+                    Command="{Binding GoHomeCommand}"
+                    BackgroundColor="#2B0B98"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Margin="0,20,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

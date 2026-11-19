@@ -52,6 +52,9 @@ namespace ViewModels
         public ICommand MultiplyCommand { get; }
         public ICommand DivideCommand { get; }
 
+      
+        public ICommand GoHomeCommand { get; }
+
         public CalculatorViewModel()
         {
             Title = "מחשבון";
@@ -59,6 +62,9 @@ namespace ViewModels
             SubtractCommand = new Command(async () => await Calculate("-"));
             MultiplyCommand = new Command(async () => await Calculate("*"));
             DivideCommand = new Command(async () => await Calculate("/"));
+
+         
+            GoHomeCommand = new Command(async () => await GoHomeAsync());
         }
 
         private async Task Calculate(string operation)
@@ -78,10 +84,10 @@ namespace ViewModels
                     Result = (num1 + num2).ToString();
                     break;
                 case "-":
-                    Result = (num1 - num2).ToString();
+                    Result = (num1 - num2).ToString(); 
                     break;
                 case "*":
-                    Result = (num1 * num2).ToString();
+                    Result = (num1 * num2).ToString(); 
                     break;
                 case "/":
                     if (num2 == 0)
@@ -93,6 +99,12 @@ namespace ViewModels
                     Result = (num1 / num2).ToString();
                     break;
             }
+        }
+
+       
+        private async Task GoHomeAsync()
+        {
+            await Shell.Current.GoToAsync("//WelcomePage");
         }
     }
 }

@@ -28,5 +28,11 @@
             Route="CalculatorPage"
             ContentTemplate="{DataTemplate views:CalculatorPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Currency Calculator">
+        <ShellContent
+            Title="Currency Calculator"
+            Route="CurrencyCalc"
+            ContentTemplate="{DataTemplate views:CurrencyCalcPage}" />
+    </FlyoutItem>
 
 </Shell>

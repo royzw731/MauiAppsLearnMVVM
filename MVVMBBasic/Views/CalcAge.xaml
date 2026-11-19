@@ -6,9 +6,15 @@
              xmlns:vm="clr-namespace:ViewModels"
              x:DataType="vm:CalcAgeViewModel"
              Title="{Binding Title}">
+    
 
     <VerticalStackLayout Padding="30" Spacing="15" VerticalOptions="Center">
-
+        <Button Text="חזרה לדף הבית"
+        Command="{Binding GoHomeCommand}"
+        BackgroundColor="#2B0B98"
+        TextColor="White"
+        CornerRadius="8"
+        Margin="0,15,0,0" />
         <!-- חובה לתת x:Name כדי שהקוד האחורי יכיר את הרכיב -->
         <!-- החלפה ב Binding YearOfBirth -->
         <Entry Text="{Binding YearOfBirth}" 

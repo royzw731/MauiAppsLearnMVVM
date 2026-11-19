@@ -1,57 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace ViewModels
+namespace ViewModels 
 {
     public class CalcAgeViewModel : BaseViewModel
     {
+        private string _birthYearText = string.Empty;
+        private string _ageResult = "הכנס שנת לידה";
+
+        public string BirthYearText
+        {
+            get => _birthYearText;
+            set
+            {
+                if (_birthYearText != value)
+                {
+                    _birthYearText = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string AgeResult
+        {
+            get => _ageResult;
+            set
+            {
+                if (_ageResult != value)
+                {
+                    _ageResult = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public ICommand CalculateAgeCommand { get; }
+        public ICommand GoHomeCommand { get; }
+
         public CalcAgeViewModel()
         {
-            Title = "דף חישוב גיל";
+            Title = "מחשבון גיל";
             CalculateAgeCommand = new Command(CalculateAge);
+            GoHomeCommand = new Command(async () => await GoHomeAsync());
         }
-        private string _yearOfBirth = string.Empty;
-        private string _result = string.Empty;
-        public string YearOfBirth
+
+        private void CalculateAge()
         {
-            get => _yearOfBirth;
-            set
-            {
-                if (_yearOfBirth != value)
-                {
-                    _yearOfBirth = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public string Result
-        {
-            get => _result;
-            set
-            {
-                if (_result != value)
-                {
-                    _result = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public void CalculateAge()
-        {
-            if (int.TryParse(YearOfBirth, out int birthYear))
+            if (int.TryParse(BirthYearText, out int birthYear))
             {
                 int currentYear = DateTime.Now.Year;
                 int age = currentYear - birthYear;
-                Result = $"הגיל שלך הוא: {age}";
+
+                if (age >= 0 && age <= 120)
+                {
+                    AgeResult = $"הגיל שלך הוא: {age}";
+                }
+                else
+                {
+                    AgeResult = "שנת לידה לא שולית או לא תקינה";
+                }
             }
             else
             {
-                Result = "נא להכניס שנה תקינה במספרים.";
+                AgeResult = "אנא הכנס מספר תקין";
             }
         }
-    }
 
+        private async Task GoHomeAsync()
+        {
+            await Shell.Current.GoToAsync("//WelcomePage");
+        }
+    }
 }

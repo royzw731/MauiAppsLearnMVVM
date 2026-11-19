@@ -6,6 +6,7 @@ namespace ViewModels
     {
         public ICommand NavigateToCalcAgeCommand { get; }
         public ICommand NavigateToCalculatorCommand { get; }
+        public ICommand NavigateToCurrencyCalcCommand { get; }
 
         public WelcomeViewModel()
         {
@@ -19,6 +20,11 @@ namespace ViewModels
             NavigateToCalculatorCommand = new Command(async () =>
             {
                 await Shell.Current.GoToAsync("//CalculatorPage");
+            });
+
+            NavigateToCurrencyCalcCommand = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync("//CurrencyCalc");
             });
         }
     }
